@@ -11,17 +11,18 @@ ZSH_TMUX_FIXTERM_WITH_256COLOR=tmux-256color
 source $ZSH/oh-my-zsh.sh
 
 ## Alias
-alias vi='vim'
+alias v='vim'
 alias rm='trash'
 alias ls="${aliases[ls]} --group-directories-first"
 alias pacman='sudo pacman'
-alias svi='sudo vim'
+alias sv='sudo vim'
 alias systemctl='sudo systemctl'
 alias journalctl='sudo journalctl'
 alias ll='ls -lah'
 alias l='ls -lh'
 alias python='python3'
-cd() { builtin cd "$@"; l; }
+c() { builtin cd "$@"; l; }
+alias g="git"
 
 update() {
   pacman -Qdtq | ifne sudo pacman --noconfirm -Rns -

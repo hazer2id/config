@@ -223,3 +223,4 @@ autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:las
 "
 let g:tagbar_width = g:sidebar_width
 let g:tagbar_autofocus = 1
+let g:tagbar_autoclose = 1
