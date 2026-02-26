@@ -10,7 +10,7 @@ Plugin 'tinted-theming/tinted-vim'
 Plugin 'preservim/nerdtree'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-"Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-surround'
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'preservim/tagbar'
@@ -224,3 +224,42 @@ autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:las
 let g:tagbar_width = g:sidebar_width
 let g:tagbar_autofocus = 1
 let g:tagbar_autoclose = 1
+
+"
+" Terminal
+"
+let g:term_buf_num = -1
+let g:hidden_term = 0
+let g:term_width = winwidth(0) / 3
+function! ToggleTerm()
+  if !exists('g:term_buf_num') || !bufexists(g:term_buf_num)
+    terminal
+    let g:term_buf_num = bufnr('%')
+    wincmd L
+    execute g:term_width . 'wincmd |'
+    wincmd p
+    setlocal nobuflisted
+    let g:hidden_term = 0
+  else
+    if g:hidden_term
+      botright vsplit
+      execute 'buffer ' . g:term_buf_num
+      wincmd L
+      execute g:term_width . 'wincmd |'
+      wincmd p
+      let g:hidden_term = 0
+    else
+      let term_winnr = bufwinnr(g:term_buf_num)
+      if term_winnr > 0
+        execute term_winnr . 'wincmd w'
+        hide
+        let g:hidden_term = 1
+      endif
+    endif
+  endif
+endfunction
+
+"
+" surround
+"
+let g:surround_no_mappings = 1

@@ -35,6 +35,11 @@ update() {
   python ~/.vim/bundle/YouCompleteMe/install.py --clangd-completer --ts-completer --quiet
 
   omz update
+
+  aichat --sync-models
+
+  docker-compose pull
+  docker-compose up -d
 }
 
 mkvenv() {
