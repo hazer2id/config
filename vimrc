@@ -10,10 +10,13 @@ Plugin 'tinted-theming/tinted-vim'
 Plugin 'preservim/nerdtree'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tpope/vim-surround'
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'preservim/tagbar'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-speeddating'
+Plugin 'tpope/vim-repeat'
+Plugin 'philrunninger/nerdtree-buffer-ops'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -36,6 +39,7 @@ set autowriteall
 autocmd BufLeave,BufWinLeave,InsertLeave,CmdlineEnter * if &filetype != 'nerdtree' && &modifiable && filereadable(bufname('%')) | silent! w | endif
 set backspace=indent,eol,start
 let g:sidebar_width = max([25, winwidth(0) / 5])
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"zz" | endif
 
 
 "
@@ -49,6 +53,7 @@ let g:NERDTreeMapOpenSplit=''
 let g:NERDTreeMapOpenVSplit=''
 let g:NERDTreeMapOpenInTab=''
 let g:NERDTreeMapOpenExpl=''
+let g:NERDTreeNaturalSort=1
 let g:NERDTreeWinSize = g:sidebar_width
 " Start NERDTree when Vim is started without file arguments.
 autocmd StdinReadPre * let s:std_in=1
@@ -56,6 +61,16 @@ autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
 autocmd BufEnter * if winnr() == winnr('h') && bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+let g:nt_idx = 0
+function! CycleNERDTreeSort()
+  let g:nt_idx = (g:nt_idx + 1) % 3
+  let g:NERDTreeSortOrder = [['\/$', '*'], ['\/$', '*', '[[-timestamp]]'], ['\/$', '*', '[[timestamp]]']][g:nt_idx]
+  try
+    call b:NERDTree.root.refresh()
+    call b:NERDTree.render()
+    echo ["Default", "Newer", "Older"][g:nt_idx]
+  catch | endtry
+endfunction
 
 
 "
