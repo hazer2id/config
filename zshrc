@@ -5,9 +5,8 @@ PATH="$HOME/.local/bin:$PATH"
 ## OMZ
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME='simple'
-plugins=(git tmux tinted-shell)
+plugins=(git tmux)
 ZSH_TMUX_AUTOSTART=true
-ZSH_TMUX_FIXTERM_WITH_256COLOR=tmux-256color
 source $ZSH/oh-my-zsh.sh
 
 ## Alias
@@ -38,8 +37,10 @@ update() {
 
   aichat --sync-models
 
+  pushd $HOME/.pass
   docker-compose pull
   docker-compose up -d
+  popd
 }
 
 mkvenv() {

@@ -17,6 +17,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-repeat'
 Plugin 'philrunninger/nerdtree-buffer-ops'
+Plugin 'morhetz/gruvbox'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -28,6 +29,7 @@ syntax on
 set hlsearch
 set incsearch
 set wildignore=.git,.next,node_modules,__pycache__,.build,.cache,compile_commands.json,*.db,*.o,.eslintrc.json,instance
+set relativenumber
 autocmd FileType * setlocal ts=2 sts=2 sw=2 expandtab smartindent cindent
 autocmd FileType markdown setlocal spell spelllang=en,cjk
 autocmd FileType c setlocal noexpandtab cc=80
@@ -190,12 +192,12 @@ endfunction
 "
 " Colours
 "
-if filereadable(expand("$HOME/.config/tinted-theming/set_theme.vim"))
-	let base16_colorspace=256
-	let base16colorspace=256
-	let tinted_colorspace=256
-	source $HOME/.config/tinted-theming/set_theme.vim
-endif
+set termguicolors
+set background=light
+let g:gruvbox_italic=1
+let g:gruvbox_improved_strings=1
+let g:gruvbox_improved_warnings=1
+colorscheme gruvbox
 
 
 "
