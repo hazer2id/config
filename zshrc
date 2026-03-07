@@ -10,15 +10,15 @@ ZSH_TMUX_AUTOSTART=true
 source $ZSH/oh-my-zsh.sh
 
 ## Alias
-alias vi='vim'
+alias vi='nvim'
 alias rm='trash'
 alias ls="${aliases[ls]} --group-directories-first"
 alias pacman='sudo pacman'
-alias svi='sudo vim'
+alias svi='sudo nvim'
 alias systemctl='sudo systemctl'
 alias journalctl='sudo journalctl'
 alias ll='ls -lah'
-alias l='ls -lh'
+alias l='ls -h'
 alias python='python3'
 cd() { builtin cd "$@"; l; }
 
@@ -27,20 +27,13 @@ update() {
   pacman --noconfirm -Syu
   yay --noconfirm -Sua
 
-  vim -E +PluginUpdate +qall
-
   ~/.tmux/plugins/tpm/bin/update_plugins all
 
   python ~/.vim/bundle/YouCompleteMe/install.py --clangd-completer --ts-completer --quiet
 
   omz update
 
-  aichat --sync-models
-
-  pushd $HOME/.pass
-  docker-compose pull
-  docker-compose up -d
-  popd
+  sudo trash-empty -f --all-users 100
 }
 
 mkvenv() {
