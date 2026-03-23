@@ -46,3 +46,25 @@ venv() {
 x() {
   echo $(($1))
 }
+
+mkpasswd() {
+  local user=$1
+  if [[ -z "$user" ]]; then
+    echo "Usage: $0 [USERNAME]"
+    return 1
+  fi
+
+  echo -n "Enter password: "
+  read -rs pass
+  echo ""
+  echo -n "Confirm password: "
+  read -rs pass2
+  echo ""
+  if [[ "$pass" != "$pass2" ]]; then
+    echo "Missmatched?!?!"
+    return 1
+  fi
+
+  local hash=$(openssl passwd -6 "$pass")
+  echo "${user}:${hash}"
+}

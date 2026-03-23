@@ -14,8 +14,8 @@ return {
               ["<esc>"] = "close",
             },
             n = {
-              ["<Space>"] = "move_selection_next",
-              ["e"] = "move_selection_previous",
+              ["i"] = "move_selection_next",
+              ["o"] = "move_selection_previous",
               ["n"] = "select_default",
               ["/"] = function()
                 vim.api.nvim_feedkeys(
@@ -42,9 +42,9 @@ return {
             sorting_strategy = "ascending",
             mappings = {
               n = {
-                ["t"] = fb_actions.goto_parent_dir,
+                ["f"] = fb_actions.goto_parent_dir,
                 ["."] = fb_actions.toggle_hidden,
-                ["N"] = fb_actions.create,
+                ["c"] = fb_actions.create,
                 ["r"] = fb_actions.rename,
               }
             }
