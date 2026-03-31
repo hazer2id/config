@@ -1,6 +1,7 @@
 ## Path
 CONFIG_PATH=$HOME/.config
 PATH="$HOME/.local/bin:$PATH"
+export EDITOR=nvim
 
 ## OMZ
 export ZSH="$HOME/.oh-my-zsh"
