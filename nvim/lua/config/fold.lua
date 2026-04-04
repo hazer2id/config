@@ -1,4 +1,4 @@
-vim.opt.viewoptions = {"folds", "cursor"}
+vim.opt.viewoptions = {"folds"}
 vim.opt.foldlevelstart = 99
 
 vim.api.nvim_create_autocmd({"BufLeave", "BufWinLeave", "VimLeavePre"}, {
