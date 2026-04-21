@@ -1,6 +1,6 @@
 ## Path
 CONFIG_PATH=$HOME/.config
-PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 export EDITOR=nvim
 
 ## OMZ

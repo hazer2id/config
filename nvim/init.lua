@@ -12,11 +12,11 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
       and vim.fn.expand("%") ~= ""
     then
       vim.cmd("silent! write")
+      vim.api.nvim_exec_autocmds("BufWritePost", { buffer = 0 })
     end
   end,
 })
 
-vim.opt.iskeyword:remove("_")
 vim.opt.wildignore = {
 	".git",
 	".next",
