@@ -8,7 +8,10 @@ E.languages = {
   rustal = {"rust"},
   marksman = {"markdown"},
   html = {"html"},
-  ts_ls = {"javascript", "typescript"},
+  vtsls = {"javascript", "typescript", "javascriptreact", "typescriptreact"},
+  css = {"css", "scss", "less"},
+  taplo = {"toml"},
+  jsonls = {"json", "jsonc"},
 }
 
 function E.get_languages()

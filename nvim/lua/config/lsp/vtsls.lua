@@ -1,8 +1,5 @@
 return {
-  cmd = {
-    "typescript-language-server",
-    "--stdio",
-  },
+  cmd = { "vtsls", "--stdio" },
   root_markers = {
     "package.json",
     "tsconfig.json",

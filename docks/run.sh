@@ -28,7 +28,7 @@ update_docker() {
 }
 
 clean_docker() {
-  docker rm $(docker ps -a | grep '^docks/' | awk '{print $3}')
+  docker rm $(docker ps -a | grep 'docks/' | awk '{print $1}')
   docker rmi $(docker images -a | grep '^docks/' | awk '{print $3}')
   docker network prune -f
   exit 0

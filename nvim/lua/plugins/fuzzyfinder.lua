@@ -14,9 +14,9 @@ return {
               ["<esc>"] = "close",
             },
             n = {
-              ["i"] = "move_selection_next",
-              ["o"] = "move_selection_previous",
-              ["n"] = "select_default",
+              ["t"] = "move_selection_next",
+              ["e"] = "move_selection_previous",
+              ["r"] = "select_default",
               ["/"] = function()
                 vim.api.nvim_feedkeys(
                   vim.api.nvim_replace_termcodes("i", true, false, true),
@@ -42,10 +42,10 @@ return {
             sorting_strategy = "ascending",
             mappings = {
               n = {
-                ["f"] = fb_actions.goto_parent_dir,
+                ["<space>"] = fb_actions.goto_parent_dir,
                 ["."] = fb_actions.toggle_hidden,
                 ["c"] = fb_actions.create,
-                ["r"] = fb_actions.rename,
+                ["n"] = fb_actions.rename,
               }
             }
           },

@@ -6,7 +6,7 @@ return {
       runtime = {
         version = 'LuaJIT',
       },
-      diagnostios = {
+      diagnostics = {
         globals = { "vim" },
       },
       workspace = {

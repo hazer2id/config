@@ -24,7 +24,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 vim.api.nvim_create_autocmd('FileType', {
   pattern = require("config.lsp.common").get_languages(),
   callback = function()
-    vim.treesitter.start()
+    if not pcall(vim.treesitter.start) then return end
     vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
     vim.opt_local.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
     vim.opt_local.foldmethod = 'expr'
