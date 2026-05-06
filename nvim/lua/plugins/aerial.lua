@@ -4,15 +4,14 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-telescope/telescope.nvim",
+      "nvim-tree/nvim-web-devicons",
     },
     config = function()
       require("aerial").setup({
-        backends = { "lsp", "treesitter" },
-        layout = {
-          default_direction = "right",
-        },
+        filter_kind = false,
         attach_mode = "global",
         show_guides = true,
+        backends = { "lsp", "treesitter", "markdown", "asciidoc", "man" },
         keymaps = {
           ["t"] = "actions.next",
           ["e"] = "actions.prev",
